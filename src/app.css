@@ -1,0 +1,101 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@layer base {
+  :root {
+    font-family: 'Courier New', monospace;
+    line-height: 1.5;
+    font-weight: 400;
+    color-scheme: dark;
+    color: rgba(255, 255, 255, 0.87);
+    background-color: #000000;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  * {
+    box-sizing: border-box;
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+  }
+
+  body {
+    margin: 0;
+    min-width: 320px;
+    min-height: 100vh;
+    background: #000000;
+    color: white;
+  }
+
+  #app {
+    width: 100%;
+    min-height: 100vh;
+  }
+}
+
+@layer components {
+  .pixel-grid {
+    background-image: 
+      linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+
+  .pixel-scanlines::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      transparent 50%,
+      rgba(0, 255, 0, 0.02) 50%
+    );
+    background-size: 100% 2px;
+    animation: scanlines 0.1s linear infinite;
+    pointer-events: none;
+  }
+
+  .pixel-divider {
+    height: 4px;
+    background: linear-gradient(90deg, 
+      transparent, 
+      #ffd700 20%, 
+      #ff8c00 50%, 
+      #ffd700 80%, 
+      transparent
+    );
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+  }
+
+  .font-pixel {
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+  }
+}
+
+@layer utilities {
+  .pixel-borders {
+    border-style: solid;
+    border-image: none;
+  }
+
+  .pixel-outline {
+    outline: 2px solid rgba(255, 140, 0, 0.5);
+    outline-offset: -2px;
+  }
+
+  .pixel-shadow-sm {
+    box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.3);
+  }
+
+  .pixel-text-shadow {
+    text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.8);
+  }
+}
